@@ -30,4 +30,4 @@ Create the first migration
 `db-migrate create TABLE --config ./config/dev.json`
 
 Dev Migration 
-    
+`db-migrate up -c `
