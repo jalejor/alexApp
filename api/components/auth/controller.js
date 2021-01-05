@@ -7,7 +7,7 @@ module.exports = function(injecteStore){
     
     let store = injecteStore;
     if(!store){
-        store = require('../../../store/dummy');
+        store = require('../../../store/mysql');
     }
 
     async function login(username, password){
@@ -20,7 +20,7 @@ module.exports = function(injecteStore){
         return bcrypt.compare(password,data.password)
             .then(areEquals => {
                 if (areEquals === true) {
-                    return auth.sign(data)
+                   return  auth.sign(JSON.parse(JSON.stringify(data)));
                 } else {
                     throw error('Invalid Data',401);
                 }

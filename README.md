@@ -27,7 +27,7 @@ Create dev.json, test.json, prod.json in config directory:
 ```
 
 Create the first migration 
-`db-migrate create TABLE --config ./config/dev.json`
+`db-migrate create TABLE --config .database/config/dev.json`
 
 Dev Migration 
 `db-migrate up -c `

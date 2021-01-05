@@ -1,14 +1,14 @@
-const store = require('../../../store/dummy');
+const store = require('../../../store/mysql');
 const auth = require('../auth');
 
 const {nanoid} = require('nanoid')
 
-const TABLE = 'user';
+const TABLE = 'users';
 
 module.exports = function(injecteStore){
     let store = injecteStore;
     if(!store){
-        store = require('../../../store/dummy');
+        store = require('../../../store/mysql');
     }
     
     function list(){
@@ -26,12 +26,13 @@ module.exports = function(injecteStore){
         }
 
         if(body.id){
-            user.id = body.nanoid
+            user.id = body.id
         }else{
             user.id = nanoid();
         }
         
         if(body.password || body.username){
+            console.log(body)
             await auth.upsert({
                 id: user.id,
                 username : user.username,
